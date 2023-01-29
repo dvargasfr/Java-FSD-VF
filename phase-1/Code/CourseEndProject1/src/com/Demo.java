@@ -12,80 +12,85 @@ public class Demo {
 	static boolean exitFileOps = false;
 	
 	public static void main(String[] args) {
-		
-		// WELCOME SCREEN
-		// app name and developer details
-		// display options for user interface
-		// features to accept the user input to select one of the options listed
-		
-		// OPTION 1
-		//		current file names in ascending order
-		// OPTION 2
-		//		details of the user interface
-		//		add file (ignore case sensitive)
-		//		delete file (with case sensitive. return msg if not found)
-		//		search file (with case sensitive, display result of success/unsuccess operation)
-		//		go back to main context
-		// OPTION 3
-		//		close the app
-		
+		DisplayWelcome();
 		do {
 			DisplayMainMenu();
 		}while(!exitMain);    
 	}
 	
+	public static void DisplayWelcome() {
+		System.out.println("Welcome to LockedMe.com");
+		System.out.println("Developed by David Vargas\n\n");
+	}
+	
 	public static void DisplayMainMenu() {
 		System.out.println("\nType the number of the action to run:");
+		System.out.println("(root directory: ./resources/)");
 		System.out.println("1- List files");
 		System.out.println("2- File operations");
 		System.out.println("3- Exit");
 		System.out.print("> ");
 		scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
-		switch(Integer.parseInt(input)) {
-		case 1:
-			ListFiles();
-			break;
-		case 2:
-			System.out.println("Chose 2");
-			do {
-				FileOps();
-			}while(!exitFileOps);
-			break;
-		case 3:
-			scanner.close();
-			exitMain = true;
-			break;
+		try {
+			switch(Integer.parseInt(input)) {
+			case 1:
+				ListFiles();
+				break;
+			case 2:
+				System.out.println("Chose 2");
+				do {
+					FileOps();
+				}while(!exitFileOps);
+				break;
+			case 3:
+				scanner.close();
+				exitMain = true;
+				break;
+			default:
+				System.out.println("Invalid input. Please type a correct option");
+				break;
+			}
+		}catch(Exception e) {
+			System.out.println("Invalid input. Please type a correct option");
 		}
 	}
 	
 	public static void FileOps() {
 		System.out.println("\nType the number of the file operation to run");
-		System.out.println("1- add file");
-		System.out.println("2- delete file");
-		System.out.println("3- search file");
-		System.out.println("4- go back to main menu");
+		System.out.println("1- Add file");
+		System.out.println("2- Delete file");
+		System.out.println("3- Search file");
+		System.out.println("4- Go back to main menu");
 		System.out.print("> ");
 		String input = scanner.nextLine();
-		switch(Integer.parseInt(input)) {
-		case 1:
-			System.out.println("Please type the file name to add:");
-			String inputFileName = scanner.nextLine();
-			CreateFile(inputFileName);
-			break;
-		case 2:
-			System.out.println("Please type the file name to delete:");
-			String deleteFileName = scanner.nextLine();
-			DeleteFile(deleteFileName);
-			break;
-		case 3:
-			System.out.println("Please type the file name to search:");
-			String searchFileName = scanner.nextLine();
-			SearchFile(searchFileName);
-			break;
-		case 4:
-			exitFileOps = true;
-			break;
+		try {
+			switch(Integer.parseInt(input)) {
+			case 1:
+				System.out.println("Please type the file name to add:");
+				String inputFileName = scanner.nextLine();
+				CreateFile(inputFileName);
+				break;
+			case 2:
+				System.out.println("Please type the file name to delete:");
+				String deleteFileName = scanner.nextLine();
+				DeleteFile(deleteFileName);
+				break;
+			case 3:
+				System.out.println("Please type the file name to search:");
+				String searchFileName = scanner.nextLine();
+				SearchFile(searchFileName);
+				break;
+			case 4:
+				exitFileOps = true;
+				break;
+			default:
+				System.out.println("Invalid input. Please type a correct option");
+				break;
+			}
+		}
+		catch(Exception e) {
+			System.out.println("Invalid input. Please type a correct option");
 		}
 	}
 	
@@ -127,6 +132,11 @@ public class Demo {
 	}
 	
 	public static void DeleteFile(String fileName) {
-		System.out.println("Delete file "+fileName);
+		File file = new File("resources/"+fileName);
+		if (file.delete()) { 
+	      System.out.println("File deleted");
+	    } else {
+	      System.out.println("Failed to delete the file.");
+	    }
 	}
 }
