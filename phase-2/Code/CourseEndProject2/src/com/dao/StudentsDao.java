@@ -1,0 +1,29 @@
+package com.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.entity.Students;
+import com.resource.DbResource;
+
+public class StudentsDao {
+	SessionFactory sf;
+	public StudentsDao() {
+		sf = DbResource.getSessionFactory();
+	}
+	
+	public int saveStudent(Students student) {
+		try {
+			Session session = sf.openSession();
+			Transaction tran = session.getTransaction();
+			tran.begin();
+			session.save(student);
+			tran.commit();
+			return 1;
+		}catch(Exception e) {
+			System.out.println(e);
+			return 0;
+		}
+	}
+}
