@@ -1,5 +1,9 @@
 package com.dao;
 
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,5 +29,12 @@ public class SubjectsDao {
 			System.out.println(e);
 			return 0;
 		}
+	}
+	
+	public List<Subjects> findAllSubjects() {
+		Session session = sf.openSession();
+		TypedQuery<Subjects> tq = session.createQuery("from Subjects");
+		List<Subjects> listOfSubjects = tq.getResultList();
+		return listOfSubjects;
 	}
 }

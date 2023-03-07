@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import com.dao.SubjectsDao;
 import com.entity.Subjects;
 
@@ -13,5 +15,9 @@ public class SubjectsService {
 		}else {
 			return "Student not saved";
 		}
+	}
+	
+	public List<Subjects> findAllSubjects() {
+		return sd.findAllSubjects();
 	}
 }

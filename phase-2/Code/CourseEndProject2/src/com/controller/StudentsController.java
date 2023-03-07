@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entity.Classes;
-import com.service.ClassesService;
+import com.entity.Students;
+import com.service.StudentsService;
 
-@WebServlet("/ClassesController")
-public class ClassesController extends HttpServlet {
+@WebServlet("/StudentsController")
+public class StudentsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public ClassesController() {
+       
+    public StudentsController() {
         super();
     }
 
@@ -27,14 +27,14 @@ public class ClassesController extends HttpServlet {
 		String classparam = request.getParameter("param");
 		System.out.println(classparam);
 		if(classparam.equals("view")) {
-			ClassesService cs = new ClassesService();
-			List<Classes> listOfClasses = cs.findAllClasses();
-			request.setAttribute("listOfClasses", listOfClasses);
-			RequestDispatcher rd = request.getRequestDispatcher("viewClasses.jsp");
+			StudentsService ss = new StudentsService();
+			List<Students> listOfStudents = ss.findAllStudents();
+			request.setAttribute("listOfStudents", listOfStudents);
+			RequestDispatcher rd = request.getRequestDispatcher("viewStudents.jsp");
 			rd.include(request, response);
 		} else {
 			if(classparam.equals("edit")) {
-				RequestDispatcher rd = request.getRequestDispatcher("addClasses.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("addStudents.jsp");
 				rd.include(request, response);
 			}
 		}
@@ -44,18 +44,20 @@ public class ClassesController extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		response.setContentType("text/html");
 		
-		int classid = Integer.parseInt(request.getParameter("classid"));
-		String classsection = request.getParameter("classsection");
+		int studentid = Integer.parseInt(request.getParameter("studentid"));
+		int studentclass = Integer.parseInt(request.getParameter("studentclass"));
+		String studentname = request.getParameter("studentname");
 		
-		Classes c = new Classes();
-		c.setClassid(classid);
-		c.setClasssection(classsection);
+		Students s = new Students();
+		s.setStudentid(studentid);
+		s.setStudentclass(studentclass);
+		s.setStudentname(studentname);
 		
-		ClassesService ps = new ClassesService();
-		String result  = ps.saveClasses(c);
+		StudentsService ss = new StudentsService();
+		String result  = ss.saveStudents(s);
 		pw.println(result);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("addClasses.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("addStudents.jsp");
 		rd.include(request, response);
 	}
 

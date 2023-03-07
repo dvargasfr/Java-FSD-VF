@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entity.Classes;
-import com.service.ClassesService;
+import com.entity.Teachers;
+import com.service.TeachersService;
 
-@WebServlet("/ClassesController")
-public class ClassesController extends HttpServlet {
+@WebServlet("/TeachersController")
+public class TeachersController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ClassesController() {
+    public TeachersController() {
         super();
     }
 
@@ -27,14 +27,14 @@ public class ClassesController extends HttpServlet {
 		String classparam = request.getParameter("param");
 		System.out.println(classparam);
 		if(classparam.equals("view")) {
-			ClassesService cs = new ClassesService();
-			List<Classes> listOfClasses = cs.findAllClasses();
-			request.setAttribute("listOfClasses", listOfClasses);
-			RequestDispatcher rd = request.getRequestDispatcher("viewClasses.jsp");
+			TeachersService ts = new TeachersService();
+			List<Teachers> listOfTeachers = ts.findAllTeachers();
+			request.setAttribute("listOfTeachers", listOfTeachers);
+			RequestDispatcher rd = request.getRequestDispatcher("viewTeachers.jsp");
 			rd.include(request, response);
 		} else {
 			if(classparam.equals("edit")) {
-				RequestDispatcher rd = request.getRequestDispatcher("addClasses.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("addTeachers.jsp");
 				rd.include(request, response);
 			}
 		}
@@ -44,18 +44,18 @@ public class ClassesController extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		response.setContentType("text/html");
 		
-		int classid = Integer.parseInt(request.getParameter("classid"));
-		String classsection = request.getParameter("classsection");
+		int teacherid = Integer.parseInt(request.getParameter("teacherid"));
+		String teachername = request.getParameter("teachername");
 		
-		Classes c = new Classes();
-		c.setClassid(classid);
-		c.setClasssection(classsection);
+		Teachers t = new Teachers();
+		t.setTid(teacherid);
+		t.setTname(teachername);
 		
-		ClassesService ps = new ClassesService();
-		String result  = ps.saveClasses(c);
+		TeachersService ts = new TeachersService();
+		String result  = ts.saveTeachers(t);
 		pw.println(result);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("addClasses.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("addTeachers.jsp");
 		rd.include(request, response);
 	}
 

@@ -1,5 +1,5 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="com.entity.Classes"%>
+<%@page import="com.entity.Students"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,19 +7,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>List of Classes</title>
+<title>List of Students</title>
 </head>
 <body>
-	<h1>View Classes here!</h1>
+	<h1>View Students here!</h1>
 	<%
-	Object obj = request.getAttribute("listOfClasses");
-	List<Classes> lc = (List)obj;
-	Iterator<Classes> li = lc.iterator();
+	Object obj = request.getAttribute("listOfStudents");
+	List<Students> ls = (List)obj;
+	Iterator<Students> li = ls.iterator();
 	while(li.hasNext()){
-		Classes c = li.next();
+		Students s = li.next();
 		%>
 		<div>
-			<span> Class ID: <%=c.getClassid()%> Class Section: <%=c.getClasssection()%> </span>
+			<span> Student ID: <%=s.getStudentid()%> Student name: <%=s.getStudentname()%> Student class: <%=s.getStudentclass()%> </span>
 		</div>
 		<% 
 	}

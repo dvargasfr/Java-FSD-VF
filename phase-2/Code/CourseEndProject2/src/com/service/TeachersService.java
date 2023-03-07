@@ -18,12 +18,7 @@ public class TeachersService {
 		}
 	}
 	
-	public String findAllTeachers() {
-		List<Teachers> listTeachers = td.findAllTeachers();
-		if(listTeachers != null) {
-			return listTeachers.toString();
-		} else {
-			return "No teachers found";
-		}
+	public List<Teachers> findAllTeachers() {
+		return td.findAllTeachers();
 	}
 }

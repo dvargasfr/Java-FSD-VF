@@ -15,7 +15,7 @@
 	if(user.equals("admin") && password.equals("admin")){
 		out.println("successfully login");
 		%>
-		<jsp:forward page="addClasses.jsp"></jsp:forward>
+		<jsp:forward page="homeAdmin.jsp"></jsp:forward>
 		<%
 	}else {
 		out.println("failure try once again");

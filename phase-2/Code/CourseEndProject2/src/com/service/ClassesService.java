@@ -17,12 +17,7 @@ public class ClassesService {
 		}
 	}
 	
-	public String findAllClasses() {
-		List<Classes> listClasses = cd.findAllClasses();
-		if(listClasses != null) {
-			return listClasses.toString();
-		} else {
-			return "No classes found";
-		}
+	public List<Classes> findAllClasses() {
+		return cd.findAllClasses();
 	}
 }
