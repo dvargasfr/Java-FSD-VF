@@ -27,6 +27,7 @@ public class StudentsController extends HttpServlet {
 		String classparam = request.getParameter("param");
 		System.out.println(classparam);
 		if(classparam.equals("view")) {
+			// Retrieve attribute with the students list to view
 			StudentsService ss = new StudentsService();
 			List<Students> listOfStudents = ss.findAllStudents();
 			request.setAttribute("listOfStudents", listOfStudents);
@@ -34,6 +35,7 @@ public class StudentsController extends HttpServlet {
 			rd.include(request, response);
 		} else {
 			if(classparam.equals("edit")) {
+				// Dispatch jsp with form to add students
 				RequestDispatcher rd = request.getRequestDispatcher("addStudents.jsp");
 				rd.include(request, response);
 			}

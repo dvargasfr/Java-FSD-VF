@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dao.ClassesDao;
 import com.entity.Classes;
+import com.entity.Subjects;
 
 public class ClassesService {
 
@@ -19,5 +20,9 @@ public class ClassesService {
 	
 	public List<Classes> findAllClasses() {
 		return cd.findAllClasses();
+	}
+	
+	public List<Subjects> findAllSubjectsOfClass(int classid) {
+		return cd.findAllSubjectsOfClass(classid);
 	}
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import com.dao.TeachersDao;
 import com.entity.Teachers;
 
-
 public class TeachersService {
 
 	TeachersDao td = new TeachersDao();
@@ -20,5 +19,9 @@ public class TeachersService {
 	
 	public List<Teachers> findAllTeachers() {
 		return td.findAllTeachers();
+	}
+	
+	public Teachers findTeacherById(int teacherid) {
+		return td.findTeacherById(teacherid);
 	}
 }

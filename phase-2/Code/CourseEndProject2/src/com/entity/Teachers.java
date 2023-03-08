@@ -15,11 +15,6 @@ public class Teachers {
 	@OneToMany
 	@JoinColumn(name = "subjectteacher")
 	List<Subjects> teachersubjects;
-	/*
-	@OneToMany
-	@JoinColumn(name = "classid")
-	List<Classes> teacherclasses;
-	*/
 	
 	public int getTid() {
 		return teacherid;
@@ -44,5 +39,4 @@ public class Teachers {
 		return "Teachers [teacherid=" + teacherid + ", teachername=" + teachername + ", teachersubjects="
 				+ teachersubjects + "]";
 	}
-
 }

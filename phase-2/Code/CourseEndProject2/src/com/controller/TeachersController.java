@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.entity.Subjects;
 import com.entity.Teachers;
+import com.service.SubjectsService;
 import com.service.TeachersService;
 
 @WebServlet("/TeachersController")
@@ -27,16 +29,28 @@ public class TeachersController extends HttpServlet {
 		String classparam = request.getParameter("param");
 		System.out.println(classparam);
 		if(classparam.equals("view")) {
+			// Retrieve attribute with the teachers list to view
 			TeachersService ts = new TeachersService();
 			List<Teachers> listOfTeachers = ts.findAllTeachers();
 			request.setAttribute("listOfTeachers", listOfTeachers);
 			RequestDispatcher rd = request.getRequestDispatcher("viewTeachers.jsp");
 			rd.include(request, response);
-		} else {
-			if(classparam.equals("edit")) {
-				RequestDispatcher rd = request.getRequestDispatcher("addTeachers.jsp");
-				rd.include(request, response);
-			}
+		}
+		if(classparam.equals("edit")) {
+			// Dispatch jsp with form to add teachers
+			RequestDispatcher rd = request.getRequestDispatcher("addTeachers.jsp");
+			rd.include(request, response);
+		}
+		if(classparam.equals("assign")) {
+			// Retrieve attribute with teachers list and subjects list to update subject and class assignment
+			TeachersService ts = new TeachersService();
+			SubjectsService ss = new SubjectsService();
+			List<Teachers> listOfTeachers = ts.findAllTeachers();
+			List<Subjects> listOfSubjects = ss.findAllSubjects();
+			request.setAttribute("listOfTeachers", listOfTeachers);
+			request.setAttribute("listOfSubjects", listOfSubjects);
+			RequestDispatcher rd = request.getRequestDispatcher("assignTeachers.jsp");
+			rd.include(request, response);
 		}
 	}
 

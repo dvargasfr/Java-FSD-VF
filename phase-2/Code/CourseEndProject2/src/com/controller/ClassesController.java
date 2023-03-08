@@ -27,16 +27,17 @@ public class ClassesController extends HttpServlet {
 		String classparam = request.getParameter("param");
 		System.out.println(classparam);
 		if(classparam.equals("view")) {
+			// Retrieve attribute with the class list to view
 			ClassesService cs = new ClassesService();
 			List<Classes> listOfClasses = cs.findAllClasses();
 			request.setAttribute("listOfClasses", listOfClasses);
 			RequestDispatcher rd = request.getRequestDispatcher("viewClasses.jsp");
 			rd.include(request, response);
-		} else {
-			if(classparam.equals("edit")) {
-				RequestDispatcher rd = request.getRequestDispatcher("addClasses.jsp");
-				rd.include(request, response);
-			}
+		}
+		if(classparam.equals("edit")) {
+			// Dispatch jsp with form to add classes
+			RequestDispatcher rd = request.getRequestDispatcher("addClasses.jsp");
+			rd.include(request, response);
 		}
 	}
 

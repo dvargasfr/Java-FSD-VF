@@ -22,13 +22,20 @@ public class SubjectsDao {
 			Session session = sf.openSession();
 			Transaction tran = session.getTransaction();
 			tran.begin();
-			session.save(subject);
+			//session.save(subject);
+			session.saveOrUpdate(subject);
 			tran.commit();
 			return 1;
 		}catch(Exception e) {
 			System.out.println(e);
 			return 0;
 		}
+	}
+	
+	public Subjects findSubjectById(int subjectid) {
+		Session session = sf.openSession();
+		Subjects s = session.get(Subjects.class, subjectid);
+		return s;	
 	}
 	
 	public List<Subjects> findAllSubjects() {

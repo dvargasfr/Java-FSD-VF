@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.entity.Classes;
+import com.entity.Subjects;
 import com.resource.DbResource;
 
 public class ClassesDao {
@@ -42,5 +43,12 @@ public class ClassesDao {
 		TypedQuery<Classes> tq = session.createQuery("from Classes");
 		List<Classes> listOfClasses = tq.getResultList();
 		return listOfClasses;
+	}
+	
+	public List<Subjects> findAllSubjectsOfClass(int classid) {
+		Session session = sf.openSession();
+		Classes c = session.get(Classes.class, classid);
+		List<Subjects> listOfSubjects = c.getSubjectslist();
+		return listOfSubjects;
 	}
 }

@@ -40,6 +40,4 @@ public class Subjects {
 		return "Subjects [subjectid=" + subjectid + ", subjectname=" + subjectname + ", subjectclass=" + subjectclass
 				+ ", subjectteacher=" + subjectteacher + "]";
 	}
-	
-	
 }

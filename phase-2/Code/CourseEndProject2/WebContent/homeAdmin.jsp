@@ -7,21 +7,21 @@
 <title>Admin page</title>
 </head>
 <body>
-	<%
-	out.println("Welcome to Admin page");
-	%>
+	<h1>Welcome to Admin page</h1>
 	<br/>
-	<a href="ClassesController?param=edit">Set up Classes list</a><br/>
-	<a href="TeachersController?param=edit">Set up Teachers list</a><br/>
-	<a href="SubjectsController?param=edit">Set up Subjects list</a><br/>
+	<h3>Set up</h3>
 	<a href="StudentsController?param=edit">Set up Students list</a><br/>
-	<a href="#">Assign Subjects to Class</a><br/>
-	<a href="#">(PENDING) Set up Teachers of a Subject</a><br/>
-	<a href="ClassesController?param=view">Show Classes list</a><br/>
-	<a href="TeachersController?param=view">Show Teachers list</a><br/>
+	<a href="SubjectsController?param=edit">Set up Subjects list</a><br/>
+	<a href="TeachersController?param=edit">Set up Teachers list</a><br/>
+	<a href="ClassesController?param=edit">Set up Classes list</a><br/>
+	<h3>Assignment</h3>
+	<a href="SubjectsController?param=assign">Assign Subjects to Class</a><br/>
+	<a href="TeachersController?param=assign">Assign Teachers to Class for Subject</a><br/>
+	<h3>View</h3>
 	<a href="StudentsController?param=view">Show Students list</a><br/>
 	<a href="SubjectsController?param=view">Show Subjects list</a><br/>
-	<a href="#">(PENDING) Show full Classes Report</a><br/>
+	<a href="TeachersController?param=view">Show Teachers list</a><br/>
+	<a href="ClassesController?param=view">Show Classes Report</a><br/>
 	
 </body>
 </html>

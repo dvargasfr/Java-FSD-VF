@@ -15,7 +15,7 @@
 	<label>Password</label>
 	<input type="password" name="pwd"><br/>
 	
-	<input type="submit" value="SignIn">
+	<input type="submit" value="sign in">
 	<input type="reset" value="reset">
 	</form>
 </body>

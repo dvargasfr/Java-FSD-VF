@@ -7,7 +7,6 @@
 <title>Add Classes</title>
 </head>
 <body>
-
 	<h2>Add Classes</h2>
 	<form action="ClassesController" method="post">
 		<label>Class ID</label>
@@ -20,6 +19,5 @@
 	<form action="homeAdmin.jsp">
 		<input type="submit" value="Go Back to Admin Home">
 	</form>
-
 </body>
 </html>

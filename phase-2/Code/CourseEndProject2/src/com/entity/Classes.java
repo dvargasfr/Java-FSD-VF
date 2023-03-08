@@ -18,11 +18,6 @@ public class Classes {
 	@OneToMany
 	@JoinColumn(name = "subjectclass")
 	private List<Subjects> listsubjects;
-	/*
-	@OneToMany
-	@JoinColumn(name = "teacherid")
-	private List<Teachers> listteachers;
-	*/
 	
 	public int getClassid() {
 		return classid;
@@ -48,23 +43,9 @@ public class Classes {
 	public void setSubjectslist(List<Subjects> subjectslist) {
 		this.listsubjects = subjectslist;
 	}
-	/*
-	public List<Teachers> getTeacherslist() {
-		return listteachers;
-	}
-	public void setTeacherslist(List<Teachers> teacherslist) {
-		this.listteachers = teacherslist;
-	}
-	@Override
-	public String toString() {
-		return "Classes [classid=" + classid + ", classsection=" + classsection + ", liststudents=" + liststudents
-				+ ", listsubjects=" + listsubjects + ", listteachers=" + listteachers + "]";
-	}
-	*/
 	@Override
 	public String toString() {
 		return "Classes [classid=" + classid + ", classsection=" + classsection + ", liststudents=" + liststudents
 				+ ", listsubjects=" + listsubjects + "]";
 	}
-	
 }
