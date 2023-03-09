@@ -61,26 +61,44 @@ public class SubjectsController extends HttpServlet {
 		response.setContentType("text/html");
 		Subjects s = new Subjects();
 		
-		// para subjectinfo = {id, name, class}
-		String subjectinfo = request.getParameter("subjectinfo");
-		List<String> subjectinfoList = new ArrayList<String>(Arrays.asList(subjectinfo.split(",")));
-		System.out.println("subjectinfo "+subjectinfoList);
-		
-		int subjectid = Integer.parseInt(subjectinfoList.get(0));
-		System.out.println("subjectid "+subjectid);
-		s.setSubjectid(subjectid);
-		
-		int subjectclass = Integer.parseInt(subjectinfoList.get(2));
-		System.out.println("subjectclass "+subjectclass);
-		s.setSubjectclass(subjectclass);
+		// param subjectinfo = {id, name, class} from assign op
+		if(request.getParameter("subjectinfo") != null) {
+			String subjectinfo = request.getParameter("subjectinfo");
+			List<String> subjectinfoList = new ArrayList<String>(Arrays.asList(subjectinfo.split(",")));
+			System.out.println("subjectinfo "+subjectinfoList);
 			
-		String subjectname = subjectinfoList.get(1);
-		System.out.println("subjectname "+subjectname);
-		s.setSubjectname(subjectname);
-		
-		int subjectteacher = Integer.parseInt(request.getParameter("subjectteacher"));
-		System.out.println("subjectteacher "+subjectteacher);
-		s.setSubjectteacher(subjectteacher);
+			int subjectid = Integer.parseInt(subjectinfoList.get(0));
+			System.out.println("subjectid "+subjectid);
+			s.setSubjectid(subjectid);
+			
+			int subjectclass = Integer.parseInt(subjectinfoList.get(2));
+			System.out.println("subjectclass "+subjectclass);
+			s.setSubjectclass(subjectclass);
+				
+			String subjectname = subjectinfoList.get(1);
+			System.out.println("subjectname "+subjectname);
+			s.setSubjectname(subjectname);
+			
+			int subjectteacher = Integer.parseInt(request.getParameter("subjectteacher"));
+			System.out.println("subjectteacher "+subjectteacher);
+			s.setSubjectteacher(subjectteacher);
+		}else {
+			int subjectid = Integer.parseInt(request.getParameter("subjectid"));
+			System.out.println("subjectid "+subjectid);
+			s.setSubjectid(subjectid);
+			
+			int subjectclass = Integer.parseInt(request.getParameter("subjectclass"));
+			System.out.println("subjectclass "+subjectclass);
+			s.setSubjectclass(subjectclass);
+				
+			String subjectname = request.getParameter("subjectname");
+			System.out.println("subjectname "+subjectname);
+			s.setSubjectname(subjectname);
+			
+			int subjectteacher = Integer.parseInt(request.getParameter("subjectteacher"));
+			System.out.println("subjectteacher "+subjectteacher);
+			s.setSubjectteacher(subjectteacher);
+		}
 		
 		SubjectsService ss = new SubjectsService();
 		String result = ss.saveSubjects(s);
