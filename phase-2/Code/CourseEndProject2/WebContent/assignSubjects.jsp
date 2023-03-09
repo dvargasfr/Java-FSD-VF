@@ -21,13 +21,13 @@
 	while(subjectsIt.hasNext()){
 		Subjects s = subjectsIt.next();
 		%>
-		<form action="SubjectsController" method="post" id="subjectclassassign">
+		<form action="SubjectsController" method="post" id="subjectclassassign<%=s.getSubjectid()%>">
 			<input type="hidden" name="subjectid" value="<%=s.getSubjectid()%>" />
 			<input type="hidden" name="subjectname" value="<%=s.getSubjectname()%>" />
 			<input type="hidden" name="subjectteacher" value="<%=s.getSubjectteacher()%>" />
 			
 			Subject ID: <%=s.getSubjectid()%> Subject name: <%=s.getSubjectname()%> Subject Class: 
-			<select id="class" name="subjectclass" form="subjectclassassign">
+			<select id="class" name="subjectclass" form="subjectclassassign<%=s.getSubjectid()%>">
 			<%
 			Iterator<Classes> classesIt = listClasses.iterator();
 			while(classesIt.hasNext()){
