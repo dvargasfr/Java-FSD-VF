@@ -114,3 +114,5 @@ The goal of the company is to deliver a high-end quality product as early as pos
   - Algorithms and flowcharts of the application 
   - Core concepts used in the project 
   - Links to the GitHub repository to verify the project completion 
+
+  
