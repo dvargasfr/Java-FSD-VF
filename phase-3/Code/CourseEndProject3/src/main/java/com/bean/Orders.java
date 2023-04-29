@@ -41,6 +41,11 @@ public class Orders {
 	}
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
+	}
+	@Override
+	public String toString() {
+		return "Orders [orderid=" + orderid + ", orderplaced=" + orderplaced + ", productid=" + productid + ", emailid="
+				+ emailid + "]";
 	}	
 	
 }

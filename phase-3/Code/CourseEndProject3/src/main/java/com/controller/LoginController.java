@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bean.Category;
 import com.bean.Login;
 import com.service.LoginService;
 
@@ -54,10 +53,35 @@ public class LoginController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/openUpdateAdminPassword",method = RequestMethod.GET)
+	public String openUpdateAdminPassword(Model mm, Login ll) {
+		return "updateAdminPassword";
+	}
+	
+	@RequestMapping(value = "/updateAdminPassword",method = RequestMethod.POST)
+	public String updateAdminPassword(Model mm, Login ll) {
+		ll.setEmailid("admin@gmail.com");
+		ll.setTypeofuser("admin");
+		String result = loginService.updatePassword(ll);
+		mm.addAttribute("login", ll);
+		System.out.println(result);
+		return "index";
+	}
+	
 	@RequestMapping(value = "/viewCustomers",method = RequestMethod.GET)
 	public String viewCustomers(Model mm, Login ll) {
 		List<Login> listOfLogins = loginService.findAllLogin();
 		mm.addAttribute("logins", listOfLogins);
 		return "viewCustomers";
+	}
+	
+	@RequestMapping(value = "/adminHome",method = RequestMethod.GET)
+	public String backAdminHome() {
+		return "adminHome";
+	}
+	
+	@RequestMapping(value = "/customerHome",method = RequestMethod.GET)
+	public String backCustomerHome() {
+		return "customerHome";
 	}
 }

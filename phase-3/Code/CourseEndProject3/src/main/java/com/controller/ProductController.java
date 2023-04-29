@@ -1,6 +1,9 @@
 package com.controller;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bean.Category;
+import com.bean.Orders;
 import com.bean.Product;
 import com.service.CategoryService;
+import com.service.OrdersService;
 import com.service.ProductService;
 
 @Controller
@@ -21,6 +26,8 @@ public class ProductController {
 	ProductService productService;
 	@Autowired 
 	CategoryService categoryService;
+	@Autowired
+	OrdersService ordersService;
 	
 	@RequestMapping(value = "/viewProductsCustomer", method = RequestMethod.GET)
 	public String viewProductsCustomer(Model mm, Product pp){
@@ -84,10 +91,19 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/orderProduct",method = RequestMethod.POST)
-	public String orderProduct(Model mm,Product product) {
+	public String placeOrder(Model mm, HttpSession hs, Product product, Orders order) {
 		String result = productService.orderProduct(product);
+		
+		String emailid = (String)hs.getAttribute("emailid");
+		order.setEmailid(emailid);
+		order.setOrderplaced(LocalDate.now());
+		order.setProductid(product.getPid());
+		ordersService.placeOrder(order);
+		
 		System.out.println("orderProduct: " + product);
+		System.out.println("placeOrder: " + order);
 		List<Product> listOfProduct = productService.findAllProducts();
+		
 		mm.addAttribute("msg", result);
 		mm.addAttribute("products", listOfProduct);
 		mm.addAttribute("product", product);

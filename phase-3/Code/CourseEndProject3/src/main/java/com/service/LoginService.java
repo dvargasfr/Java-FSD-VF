@@ -42,6 +42,11 @@ public class LoginService {
 		}
 	}
 	
+	public String updatePassword(Login login) {
+		loginRepository.saveAndFlush(login);
+		return "Password updated successfully";
+	}
+	
 	public List<Login> findAllLogin(){
 		System.out.println("findAll: "+loginRepository.findAll());
 		return loginRepository.findAll();
