@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.repository.LoginRepository;
 
 @Service
 public class LoginService {
+	
 	@Autowired
 	LoginRepository loginRepository;
 	
@@ -38,5 +40,10 @@ public class LoginService {
 				return "Customer login successfully";
 			}
 		}
+	}
+	
+	public List<Login> findAllLogin(){
+		System.out.println("findAll: "+loginRepository.findAll());
+		return loginRepository.findAll();
 	}
 }

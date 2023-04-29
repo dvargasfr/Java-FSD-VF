@@ -21,12 +21,20 @@ public class ProductController {
 	@Autowired 
 	CategoryService categoryService;
 	
-	@RequestMapping(value = "/viewProductDetailsByCustomer",method = RequestMethod.GET)
-	public String viewProduct(Model mm, Product pp){
+	@RequestMapping(value = "/viewProductsCustomer", method = RequestMethod.GET)
+	public String viewProductsCustomer(Model mm, Product pp){
 		List<Product> listOfProducts = productService.findAllProduts();
 		mm.addAttribute("products", listOfProducts);
 		
-		return "viewProductsByCustomer";
+		return "viewProductsCustomer";
+	}
+	
+	@RequestMapping(value = "/viewProductsAdmin",method = RequestMethod.GET)
+	public String viewProductsAdmin(Model mm, Product pp){
+		List<Product> listOfProducts = productService.findAllProduts();
+		mm.addAttribute("products", listOfProducts);
+		
+		return "viewProductsAdmin";
 	}
 	
 	@RequestMapping(value = "/addProductPage",method = RequestMethod.GET)

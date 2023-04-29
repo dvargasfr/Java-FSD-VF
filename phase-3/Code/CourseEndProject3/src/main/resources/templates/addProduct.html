@@ -3,11 +3,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Sporty Shoes - Admin - Add Category</title>
+<title>Sporty Shoes - Admin - Add Product</title>
 </head>
 <body>
 	<span th:text="${msg}"></span>
-	<h2>Sporty Shoes - Admin - Add Category</h2>
+	<h2>Sporty Shoes - Admin - Add Product</h2>
 	<form action="#" th:action="@{/storeProductInfo}" th:object="${product}" method="post">
 		<label>Product Name</label>
 		<input type="text" th:field="*{pname}"/><br/>
@@ -30,7 +30,8 @@
 		<input type="submit" value="Store Product"/>
 	</form>
 	<br/>
-	<a th:href="@{/adminHome}">Back</a>
+	<a th:href="@{/adminHome}">Back to Home Page</a>|
+	<a th:href="@{/viewProductsAdmin}">View Products</a>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bean.Category;
 import com.bean.Login;
 import com.service.LoginService;
 
@@ -49,5 +52,12 @@ public class LoginController {
 		mm.addAttribute("login", ll);
 		System.out.println(result);
 		return "index";
+	}
+	
+	@RequestMapping(value = "/viewCustomers",method = RequestMethod.GET)
+	public String viewCustomers(Model mm, Login ll) {
+		List<Login> listOfLogins = loginService.findAllLogin();
+		mm.addAttribute("logins", listOfLogins);
+		return "viewCustomers";
 	}
 }

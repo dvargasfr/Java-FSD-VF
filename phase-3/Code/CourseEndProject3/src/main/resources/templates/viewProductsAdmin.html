@@ -3,10 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Sporty Shoes - Products Page</title>
+<title>Sporty Shoes - Admin - Products</title>
 </head>
 <body>
-	<h2>Sporty Shoes - Products Page</h2>
+	<h2>Sporty Shoes - Admin - Products</h2>
 	<table border="1">
 	<tr>
 		<th>PId</th>
@@ -16,7 +16,7 @@
 		<th>Image URL</th>
 		<th>Place Order</th>
 	</tr>
-	<tr th:each="product:${products}"> 
+	<tr th:each="product:${products}">
 		<td th:text="${product.pid}"></td>
 		<td th:text="${product.pname}"></td>
 		<td th:text="${product.price}"></td>
@@ -26,6 +26,8 @@
 	</tr>
 	</table>
 	<br/>
-	<a th:href="@{/customerHome}">Back to Home Page</a>
+	<a th:href="@{/addProductPage}">Add Product</a> |
+	<a th:href="@{/adminHome}">Back to Home Page</a>
+
 </body>
 </html>
