@@ -16,13 +16,8 @@ public class Orders {
 	private int orderid;
 	@DateTimeFormat(pattern = "YYYY-mm-dd")
 	private LocalDate orderplaced;
-	private Integer productid;
+	private Integer productid; 
 	private String emailid;
-	@Override
-	public String toString() {
-		return "Orders [orderid=" + orderid + ", orderplaced=" + orderplaced + ", productid=" + productid + ", emailid="
-				+ emailid + "]";
-	}
 	public int getOrderid() {
 		return orderid;
 	}
@@ -46,6 +41,6 @@ public class Orders {
 	}
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
-	}
-
+	}	
+	
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Sporty Shoes - Order Product</title>
+</head>
+<body>
+<span th:text="${msg}"></span>
+<h2>Sporty Shoes - Order Product</h2>
+<form action="#" th:action="@{/orderProduct}" th:object="${product}" method="post">
+		<input type="hidden" th:field="*{pid}" readonly="readonly"/><br/>
+		<input type="hidden" th:field="*{productimage}" readonly="readonly"/><br/>
+		<label>Name</label>
+		<input type="text" th:field="*{pname}" readonly="readonly"/><br/>
+		<label>Price</label>
+		<input type="text" th:field="*{price}" readonly="readonly"/><br/>
+		<label>Qty</label>
+		<input type="text" th:field="*{qty}"/><br/>
+		
+		<input type="submit" value="Order Product"/>
+		<input type="reset" value="Reset"/>
+	</form>
+</body>
+</html>
