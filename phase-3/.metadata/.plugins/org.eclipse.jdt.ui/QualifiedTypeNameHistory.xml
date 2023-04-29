@@ -4,4 +4,8 @@
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="com.service.ProductService"/>
+<fullyQualifiedTypeName name="com.bean.Category"/>
+<fullyQualifiedTypeName name="com.service.CategoryService"/>
 </qualifiedTypeNameHistroy>
