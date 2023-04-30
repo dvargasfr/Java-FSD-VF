@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bean.Orders;
 import com.bean.Product;
@@ -33,10 +34,16 @@ public class OrdersController {
 		order.setOrderplaced(LocalDate.now());
 		order.setProductid(pid);
 		String result = ordersService.placeOrder(order);
-		productService.decrementQty(pid);
 		List<Product> listOfProducts = productService.findAllProducts();
 		mm.addAttribute("products", listOfProducts);
 		mm.addAttribute("msg", result);
 		return "viewProductsByCustomer";
-	}	
+	}
+	
+	@RequestMapping(value = "/viewOrders",method = RequestMethod.GET)
+	public String viewOrders(Model mm, Orders o){
+		List<Orders> listOfOrders = ordersService.viewAllOrderDetails();
+		mm.addAttribute("orders", listOfOrders);
+		return "viewOrders";
+	}
 }

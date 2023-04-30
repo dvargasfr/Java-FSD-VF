@@ -16,19 +16,6 @@ public class CategoryController {
 
 	@Autowired
 	CategoryService categoryService;
-	/*
-	@RequestMapping(value = "/adminHome",method = RequestMethod.GET)
-	public String back(Model mm, Category cc) {
-		mm.addAttribute("category", cc);
-		return "adminHome";
-	}
-	
-	@RequestMapping(value = "/customerHome",method = RequestMethod.GET)
-	public String backCustomerHome(Model mm, Category cc) {
-		mm.addAttribute("category", cc);
-		return "customerHome";
-	}
-	*/
 	
 	@RequestMapping(value = "/addCategoryPage",method = RequestMethod.GET)
 	public String openAddCategoryPage(Model mm, Category cc) {

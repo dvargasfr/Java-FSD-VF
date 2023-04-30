@@ -41,6 +41,7 @@ public class LoginController {
 		}else if(result.equals("Admin login successfully")) {
 			return "adminHome";
 		}else {
+			mm.addAttribute("msg", result);
 			return "index";
 		}
 	}
@@ -49,6 +50,7 @@ public class LoginController {
 	public String signUp(Model mm, Login ll) {
 		String result = loginService.signUp(ll);
 		mm.addAttribute("login", ll);
+		mm.addAttribute("msg", result);
 		System.out.println(result);
 		return "index";
 	}

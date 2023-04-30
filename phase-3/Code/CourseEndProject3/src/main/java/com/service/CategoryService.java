@@ -16,8 +16,13 @@ public class CategoryService {
 	
 	public String storeCategory(Category category) {
 		System.out.println("categoryService.storeCategory: "+category);
-		categoryRepository.save(category);
-		return "Category details stored";
+		if(categoryRepository.existsByCname(category.getCname())) {
+			return "Category not stored. It already exists.";
+		}else {
+			categoryRepository.save(category);
+			return "Category details stored";
+		}
+		
 	}
 	
 	public List<Category> findAllCategory() {

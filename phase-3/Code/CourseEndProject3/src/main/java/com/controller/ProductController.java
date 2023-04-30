@@ -109,4 +109,15 @@ public class ProductController {
 		mm.addAttribute("product", product);
 		return "viewProductsCustomer";
 	}
+	
+	@RequestMapping(value = "/deleteProduct/{pid}",method = RequestMethod.GET)
+	public String deleteProduct(@PathVariable("pid") int pid, Model mm, Product product) {
+		
+		String result = productService.deleteProduct(pid);
+		mm.addAttribute("msg", result);
+		List<Product> listOfProduct = productService.findAllProducts();
+		mm.addAttribute("products", listOfProduct);
+		mm.addAttribute("product", product);
+		return "viewProductsAdmin";
+	}
 }

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h2>Welcome to Sporty Shoes</h2>
-	
+	<span th:text="${msg}" style="color:red;"></span>
 	<form action="#" th:action="@{/signIn}" th:object="${login}" method="post">
 		<label>Email Id</label>
 		<input type="email" th:field="*{emailid}"/><br/>

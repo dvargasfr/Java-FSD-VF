@@ -1,5 +1,6 @@
 package com.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,13 @@ public class OrdersService {
 	
 	public List<Orders> viewAllOrderDetails() {
 		return ordersRepository.findAll();
+	}
+	
+	public List<Orders> findByCustomer(String key){
+		return ordersRepository.findByEmailid(key);
+	}
+	
+	public List<Orders> findByDate(LocalDate key){
+		return ordersRepository.findByOrderplaced(key);
 	}
 }

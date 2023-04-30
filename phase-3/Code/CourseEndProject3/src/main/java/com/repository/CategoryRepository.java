@@ -7,5 +7,5 @@ import com.bean.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer>{
-
+	boolean existsByCname(String name);
 }

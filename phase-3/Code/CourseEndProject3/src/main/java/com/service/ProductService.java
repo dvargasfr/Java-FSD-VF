@@ -24,15 +24,6 @@ public class ProductService {
 		return "Product details stored successfully";
 	}
 	
-	public void decrementQty(int pid) {
-		Optional<Product> result = productRepository.findById(pid);
-		if(result.isPresent()) {
-			Product p = result.get();
-			p.setQty(p.getQty()-1);
-			productRepository.saveAndFlush(p);
-		}
-	}
-	
 	public String updateProduct(Product product) {
 		Optional<Product> result = productRepository.findById(product.getPid());
 		if(result.isPresent()) {
@@ -76,6 +67,17 @@ public class ProductService {
 		}else {
 			System.out.println("Product not ordered");
 			return "Product not ordered";
+		}
+	}
+	
+	public String deleteProduct(int pid) {
+		Optional<Product> result = productRepository.findById(pid);
+		if(result.isPresent()) {
+			Product p = result.get();
+			productRepository.delete(p);
+			return "Product deleted successfully";
+		}else {
+			return "Product not present";
 		}
 	}
 }

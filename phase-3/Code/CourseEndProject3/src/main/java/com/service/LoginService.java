@@ -17,14 +17,14 @@ public class LoginService {
 	
 	public String signUp(Login login) {
 		if(login.getTypeofuser().equalsIgnoreCase("admin")) {
-			return "Admin account can't create";
+			return "Admin account can't be created";
 		}else {
 			Optional<Login> result = loginRepository.findById(login.getEmailid());
 			if(result.isPresent()) {
-				return "Already account present";
+				return "Account already exists";
 			}else {
 				loginRepository.save(login);
-				return "Account created successfully";
+				return "Account created successfully!";
 			}
 		}
 	} 

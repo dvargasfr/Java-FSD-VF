@@ -6,9 +6,9 @@
 <title>Sporty Shoes - Order Product</title>
 </head>
 <body>
-<span th:text="${msg}"></span>
-<h2>Sporty Shoes - Order Product</h2>
-<form action="#" th:action="@{/orderProduct}" th:object="${product}" method="post">
+	<span th:text="${msg}"></span>
+	<h2>Sporty Shoes - Order Product</h2>
+	<form action="#" th:action="@{/orderProduct}" th:object="${product}" method="post">
 		<input type="hidden" th:field="*{pid}" readonly="readonly"/><br/>
 		<input type="hidden" th:field="*{productimage}" readonly="readonly"/><br/>
 		<label>Name</label>
