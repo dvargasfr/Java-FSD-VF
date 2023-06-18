@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Result from './Result';
+
 function Quiz() {
-    let [questions,setQuestions]=useState([]);
-    let [answer,setAnswer]=useState([]);
+    let [questions,setQuestions] = useState([]);
+    let [answers,setAnswers] = useState([]);
+    let [userAnswers,setUserAnswers] = useState(new Map());
 
     useEffect(()=> {
         //alert("Hello");  
@@ -17,22 +20,25 @@ function Quiz() {
         axios.get("http://localhost:3031/answers").
         then(result=> {
             //console.log(result.data)
-            setAnswer(result.data);
+            setAnswers(result.data);
         }).
         catch(error=> {
             console.log(error);
         });
     },[])
 
-    let mm = new Map();
+    //let mm = new Map();
     let getSelectedAns = function(event,qid,ans){
+        setUserAnswers(map => new Map(map.set(qid, ans)));
+        /*
         mm.set(qid,ans);
         console.log(mm);
-        console.log(answer);
+        console.log(answers);
+        */
     }
 
     let question = questions.map(q=> 
-        <div>
+        <div id={q.qid}>
             {q.qid} ) {q.question} ? <br/>
             <input type="radio" name={q.qid} value={q.ans1} onClick={(event)=> {
                 getSelectedAns(event,q.qid,q.ans1);
@@ -52,6 +58,7 @@ function Quiz() {
     <div>
         <h2>Online Test</h2>
         {question}
+        <Result answers={answers} useranswers={userAnswers}></Result>
     </div>
     )
 }

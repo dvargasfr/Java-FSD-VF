@@ -1,22 +1,30 @@
+import { useState } from "react";
+
 function Result(props){
-    let [answer, setAnswer] = useState([]);
+    let [answerCnt, setAnswerCnt] = useState(0);
+    let [answerOk, setAnswerOk] = useState(0);
 
     let correctAnswers = function() {
-        answer.answers.forEach((value, key) => {
-            const specificValue = props.useranswer.get(key);
+        props.answers.map(a=>{
+            const specificValue = props.useranswers.get(a.qid);
             if(specificValue){
-                if(specificValue === value ){
-                    console.log(key + " = "+ props.useranswer.get(key) + " - correct!");
+                if(specificValue === a.correctAns){
+                    console.log(a.qid + " = "+ specificValue + " - correct!");
+                    setAnswerOk(answerOk+1);
                 }else{
-                    console.log(key + " = "+ props.useranswer.get(key) + " - incorrect. Should be "+ value);
+                    console.log(a.qid + " = "+ specificValue + " - incorrect. Should be "+ a.correctAns);
                 }
             }
+            setAnswerCnt(answerCnt+1);
         });
     }
 
     return(
         <div>
             <input type="button" value="Get correction" onClick={correctAnswers}/><br/>
+            <div>Result: {answerOk}/{answerCnt}</div>
         </div>
     )
 }
+
+export default Result;
