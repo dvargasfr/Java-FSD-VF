@@ -10,19 +10,28 @@ function Result(props){
             if(specificValue){
                 if(specificValue === a.correctAns){
                     console.log(a.qid + " = "+ specificValue + " - correct!");
-                    setAnswerOk(answerOk+1);
+                    setAnswerOk(answerOk => answerOk + 1);
+                    document.getElementById(a.qid).style.background = "green";
                 }else{
                     console.log(a.qid + " = "+ specificValue + " - incorrect. Should be "+ a.correctAns);
+                    document.getElementById(a.qid).style.background = "red";
                 }
             }
-            setAnswerCnt(answerCnt+1);
+            setAnswerCnt(answerCnt => answerCnt + 1);
         });
+        document.getElementById("result-div").style.visibility="visible";
     }
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
+    
 
     return(
         <div>
-            <input type="button" value="Get correction" onClick={correctAnswers}/><br/>
-            <div>Result: {answerOk}/{answerCnt}</div>
+            <input type="button" value="Get result and correct" onClick={correctAnswers}/><br/>
+            <div id="result-div" style={{visibility: "hidden"}}>Result {answerOk}/{answerCnt}</div>
+            <button onClick={refreshPage}>Reset</button>
         </div>
     )
 }
