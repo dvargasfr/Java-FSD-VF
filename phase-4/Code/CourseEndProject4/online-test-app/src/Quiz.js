@@ -57,8 +57,10 @@ function Quiz() {
     return(
     <div>
         <h2>Online Test</h2>
-        {question}
-        <Result answers={answers} useranswers={userAnswers}></Result>
+        <div class="container">
+            {question}
+            <Result answers={answers} useranswers={userAnswers}></Result>
+        </div>
     </div>
     )
 }

@@ -29,9 +29,9 @@ function Result(props){
 
     return(
         <div>
-            <input type="button" value="Get result and correct" onClick={correctAnswers}/><br/>
+            <button class="btn btn-primary" onClick={correctAnswers}>Get result and correct</button>
+            <button class="btn btn-secondary" onClick={refreshPage}>Reset</button>
             <div id="result-div" style={{visibility: "hidden"}}>Result {answerOk}/{answerCnt}</div>
-            <button onClick={refreshPage}>Reset</button>
         </div>
     )
 }
