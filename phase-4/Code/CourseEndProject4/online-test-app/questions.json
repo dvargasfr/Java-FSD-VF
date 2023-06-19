@@ -1,6 +1,9 @@
 {
     "questions":[
-        {"qid":1,"question":"5+6","ans1":8,"ans2":11,"ans3":10,"ans4":9},
-        {"qid":2,"question":"What is react js","ans1":"programming language","ans2":"javascript library","ans3":"javascript framework","ans4":"java framework"}
+        {"qid":1,"question":"What is the correct command to create a new React project?","ans1":"npm create-react-app","ans2":"npm create-react-app myReactApp","ans3":"create-react-app myReactApp","ans4":"create-react-app"},
+        {"qid":2,"question":"What is React JS","ans1":"programming language","ans2":"JavaScript library","ans3":"JavaScript framework","ans4":"Java framework"},
+        {"qid":3,"question":"What command is used to start the React local development server?","ans1":"npm start","ans2":"npm serve","ans3":"npm run dev","ans4":"npm build"},
+        {"qid":4,"question":"What is the default local host port that a React development server uses?","ans1":"3500","ans2":"3000","ans3":"8080","ans4":"5000"},
+        {"qid":5,"question":"Which keyword creates a constant in JavaScript?","ans1":"const","ans2":"constant","ans3":"let","ans4":"var"}
     ]
 }

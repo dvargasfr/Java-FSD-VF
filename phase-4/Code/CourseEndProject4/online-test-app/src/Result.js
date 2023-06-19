@@ -11,10 +11,10 @@ function Result(props){
                 if(specificValue === a.correctAns){
                     console.log(a.qid + " = "+ specificValue + " - correct!");
                     setAnswerOk(answerOk => answerOk + 1);
-                    document.getElementById(a.qid).style.background = "green";
+                    document.getElementById(a.qid).style.background = "rgb(0 255 0 / 30%)";
                 }else{
                     console.log(a.qid + " = "+ specificValue + " - incorrect. Should be "+ a.correctAns);
-                    document.getElementById(a.qid).style.background = "red";
+                    document.getElementById(a.qid).style.background = "rgb(255 0 0 / 30%)";
                 }
             }
             setAnswerCnt(answerCnt => answerCnt + 1);

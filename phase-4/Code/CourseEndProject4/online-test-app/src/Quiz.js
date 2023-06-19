@@ -33,7 +33,7 @@ function Quiz() {
 
     let question = questions.map(q=> 
         <div id={q.qid} style={{marginBottom:'5px'}}>
-            <br/><h1>{q.qid}. {q.question} ? </h1>
+            <br/><h3>{q.qid}. {q.question} ? </h3>
             <div class="row" style={{textAlign:'center'}}>
                 <div class="col-3">
                     <input type="radio" name={q.qid} value={q.ans1} onClick={(event)=> {getSelectedAns(event,q.qid,q.ans1);}}/> {q.ans1}
