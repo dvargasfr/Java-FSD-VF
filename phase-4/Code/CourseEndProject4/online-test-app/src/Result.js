@@ -26,12 +26,11 @@ function Result(props){
         window.location.reload(false);
     }
     
-
     return(
         <div>
-            <button class="btn btn-primary" onClick={correctAnswers}>Get result and correct</button>
             <button class="btn btn-secondary" onClick={refreshPage}>Reset</button>
-            <div id="result-div" style={{visibility: "hidden"}}>Result {answerOk}/{answerCnt}</div>
+            <button class="btn btn-primary" style={{margin:'5px'}} onClick={correctAnswers}>Get result and correct</button>
+            <h1 id="result-div" style={{visibility: "hidden", textAlign:"center"}}>Result {answerOk}/{answerCnt}</h1>
         </div>
     )
 }
