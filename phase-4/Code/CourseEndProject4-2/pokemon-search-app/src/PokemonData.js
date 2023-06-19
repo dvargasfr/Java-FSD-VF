@@ -14,7 +14,7 @@ function PokemonData(props) {
         .get(props.pokemonurl)
         .then((response) => {
             setPokemonData(response.data);
-            console.log(response.data);
+            //console.log(response.data);
         })
         .catch((error) => {
             console.log(error);

@@ -12,7 +12,7 @@ function Pokedex() {
 
     useEffect(() => {
         fetchPokemonList();
-    }, []);
+    }, [currentPage]);
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -38,12 +38,47 @@ function Pokedex() {
         .get(`https://pokeapi.co/api/v2/pokemon?offset=${(currentPage - 1) * 10}&limit=10`)
         .then((response) => {
             setPokemonList(response.data.results);
-            console.log(response.data.results);
+            console.log("currentPage",currentPage);
+            console.log(`https://pokeapi.co/api/v2/pokemon?offset=${(currentPage - 1) * 10}&limit=10`);
             setTotalPages(Math.ceil(response.data.count / 10));
+            DrawPokemonList();
         })
         .catch((error) => {
             console.log(error);
         });
+    };
+
+    const DrawPokemonList = () => {
+        return (
+            <div>
+                {pokemonList.map((pokemon) => (
+                    <div id={pokemon.name} key={pokemon.name}>
+                        <PokemonData pokemonurl={pokemon.url}></PokemonData>
+                    </div>
+                ))}
+    
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleChange}
+                    placeholder="Enter Pokemon Name"
+                    id="search"
+                />
+                <button onClick={handleSearch}>Search</button>
+        
+                <div id="pagination">
+                    <button disabled={currentPage === 1} onClick={handlePreviousPage} id="previous">
+                        Previous
+                    </button>
+                    <span>
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button disabled={currentPage === totalPages} onClick={handleNextPage} id="next">
+                        Next
+                    </button>
+                </div>
+            </div>
+        )
     };
 
     const handlePreviousPage = () => {
@@ -59,21 +94,12 @@ function Pokedex() {
     };
 
     return (
+        <DrawPokemonList></DrawPokemonList>
+        /*
         <div>
             {pokemonList.map((pokemon) => (
                 <div id={pokemon.name}>
                     <PokemonData pokemonurl={pokemon.url}></PokemonData>
-                    {/*
-                    <span>{pokemon.name}</span>
-                    
-                    <img
-                        src={pokemon.sprites.front_default}
-                        alt={pokemon.name}/>
-                    <p>CP: {pokemon.base_experience}</p>
-                    <p>Attack: {pokemon.stats[1].base_stat}</p>
-                    <p>Defense: {pokemon.stats[2].base_stat}</p>
-                    <p>Type: {pokemon.types[0].type.name}</p>
-                    */}
                 </div>
             ))}
 
@@ -98,7 +124,8 @@ function Pokedex() {
                 </button>
             </div>
         </div>
-      );
+        */ 
+    );
 
 
     /*
