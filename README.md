@@ -8,18 +8,20 @@ The Online Test Application system creates an application that enables users to 
 This system contains three main modules: Quiz, Review, and Result. The quiz section of the online test application accepts the questions in JSON format. The JSON file can be easily shared from the server in the pre-defined format. The application renders the test at the client-side.
 The “Review and display result” section allows users to declare the results immediately. You can simply call another JSON with the answers in it and evaluate and display the results immediately.
 
-# Course-end Project 2. Kitchen Story
+# Course-end Project 2. Pokemon Search Application
 ## DESCRIPTION
 
 ### <ins>Project objective:</ins> 
-Kitchen Story is an e-commerce portal that lets people shop  basic food items on their website. The website needs to have the following features: 
+In the world of pokemon, where the user should be able to search for different pokemons, you have to create an application to search them with the following functionalities:
+- The Pokemon application should have the list of pokemon details which will be provided in the form of JSON data i.e., it should have name, image, CP, attack, defense type etc.
+- It should have a search bar so that user can search the pokemon based on the name of pokemon.
+- Since we have many pokemon, apply pagination, so that user can only see 10 pokemon at a time.
 
-- A search form in the home page to allow entry of the food items to be purchased by the customer.
-- Based on item details entered, it will show available food items with  price.
-- Once a person selects an item to purchase, they will be redirected to the list of available items. In the next page, they are shown the complete breakout of the order and details of the payment to be made in the payment gateway. When payment is done, they are shown a confirmation page with details of the order.
-
-### <ins>For the above features to work, there will be an admin backend with the following features:</ins> 
-
-- Admin login page where admin can change password after login if he wants to
-- A master list of food items available for purchase
-- A functionality to add or remove food items
+### <ins>Note:</ins> 
+- Pagination should have "page current-page of Total pages". For example: page 50 of 100.
+- The total pages should be calculated based on the JSON data provided and the current page is calculated based on the page the user is in, currently.
+- Pagination should have id="pagination", which should contain the details as listed above.
+- The previous button should be disabled if it is in the first page and it should have id="previous".
+- Next button should show next set of pokemon (which is 10 pokemon on a click) and should have id="next".
+- Search bar should have an id="search".
+- Pokemon's name should be inside the span tag (or any other tag) which should have id="name".
