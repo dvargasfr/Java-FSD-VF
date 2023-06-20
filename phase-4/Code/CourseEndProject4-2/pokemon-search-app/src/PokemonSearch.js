@@ -6,22 +6,17 @@ function PokemonSearch() {
 
     const [pokemonData, setPokemonData] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
+    const [updatedTerm, setUpdatedTerm] = useState(searchTerm);
 
-    const handleChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const handleSearch = () => {
+    const handleSearch = (event) => {
+        setUpdatedTerm(searchTerm);
+        console.log();
         axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`)
+        .get(`https://pokeapi.co/api/v2/pokemon/${updatedTerm.toLowerCase()}`)
         .then((response) => {
             setPokemonData(response.data);
-            /*
-            const totalCount = response.data.count;
-            const totalPagesCount = Math.ceil(totalCount / 10);
-            setTotalPages(totalPagesCount);
-            */
            console.log(response.data);
+           DrawPokemonData();
            
         })
         .catch((error) => {
@@ -30,18 +25,27 @@ function PokemonSearch() {
         });
     };
 
+    let DrawPokemonData = () => {
+        return(
+            <div>
+                {pokemonData && <PokemonData pokemonurl={`https://pokeapi.co/api/v2/pokemon/${updatedTerm.toLowerCase()}`}></PokemonData>}
+            </div>
+            
+        )
+    }
+
     return(
         <div>
             <input
                 type="text"
                 value={searchTerm}
-                onChange={handleChange}
+                onChange={(event)=>setSearchTerm(event.target.value)}
                 placeholder="Enter Pokemon Name"
                 id="search"
             />
             <button onClick={handleSearch}>Search</button>
-        
-            {pokemonData && <PokemonData pokemonurl={`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`}></PokemonData>}
+            <DrawPokemonData></DrawPokemonData>
+            
         </div>
     );
 }
