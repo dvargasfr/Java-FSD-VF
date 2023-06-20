@@ -35,17 +35,21 @@ function PokemonSearch() {
     }
 
     return(
-        <div>
-            <input
-                type="text"
-                value={searchTerm}
-                onChange={(event)=>setSearchTerm(event.target.value)}
-                placeholder="Enter Pokemon Name"
-                id="search"
-            />
-            <button onClick={handleSearch}>Search</button>
-            <DrawPokemonData></DrawPokemonData>
-            
+        <div class="row" style={{textAlign:"center"}}>
+            <div style={{marginBottom:"2%"}}>
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(event)=>setSearchTerm(event.target.value)}
+                    placeholder="Enter Pokemon Name"
+                    id="search"
+                />
+                <button onClick={handleSearch}>Search</button>
+            </div>
+            <div class="row" style={{width:"20%", margin:"auto"}}>
+                <DrawPokemonData></DrawPokemonData>
+            </div>
+            <div style={{margin:"0 auto 20% auto"}}></div>
         </div>
     );
 }

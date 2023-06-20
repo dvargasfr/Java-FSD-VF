@@ -24,7 +24,7 @@ function PokemonData(props) {
     return(
         <div>
             {pokemonData && (
-                <div>
+                <div style={{background:"rgba(255,255,255,0.7)",borderRadius:"25px"}}>
                     <h4>{pokemonData.name}</h4>        
                     <img src={pokemonData.sprites.front_default} alt={pokemonData.name}/><br/>
                     <span>CP: {pokemonData.base_experience}</span><br/>
