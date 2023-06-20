@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import PokemonData from './PokemonData';
+import PokemonSearch from "./PokemonSearch";
 
 function Pokedex() {
 
@@ -14,6 +15,7 @@ function Pokedex() {
         fetchPokemonList();
     }, [currentPage]);
 
+    /*
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
@@ -32,6 +34,7 @@ function Pokedex() {
             setPokemonData(null);
         });
     };
+    */
 
     const fetchPokemonList = () => {
         axios
@@ -56,15 +59,8 @@ function Pokedex() {
                         <PokemonData pokemonurl={pokemon.url}></PokemonData>
                     </div>
                 ))}
-    
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={handleChange}
-                    placeholder="Enter Pokemon Name"
-                    id="search"
-                />
-                <button onClick={handleSearch}>Search</button>
+
+                <PokemonSearch></PokemonSearch>
         
                 <div id="pagination">
                     <button disabled={currentPage === 1} onClick={handlePreviousPage} id="previous">
