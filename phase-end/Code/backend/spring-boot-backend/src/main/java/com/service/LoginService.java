@@ -36,8 +36,6 @@ public class LoginService {
 	}
 	
 	public String signUp(Login login) {
-		System.out.print("LoginService: ");
-		System.out.println(login.getEmailid());
 		if(login.getTypeofuser().equals("admin")) {
 			return "Sorry, you can't create admin account";
 		}else {

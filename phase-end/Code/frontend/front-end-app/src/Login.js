@@ -16,9 +16,9 @@ function Login(){
         try{
             let result = await axios.post("http://localhost:8081/login/signIn",login);
             console.log(result.data);
-            if(result.data=="Admin success"){
+            if(result.data === "Admin success"){
                 navigate("/admin");
-            }else if(result.data=="Customer success"){
+            }else if(result.data === "Customer success"){
                 navigate("/customer");
             }else{
                 alert(result.data);
@@ -27,6 +27,7 @@ function Login(){
             console.log(ex);
         }
     }
+
     return(
         <div>
             <div>Login Page</div>
