@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MedicineData from "./MedicineData";
+import DeleteMedicine from "./DeleteMedicine";
 
 function ViewMedicine(){
     let [medicineList,setMedicineList] = useState([]);
 
     useEffect(()=> { 
-        axios.get("http://localhost:8081/medicine/listMedicine").
-        then(result=> {
+        axios.get("http://localhost:8081/medicine/listMedicine")
+        .then(result=> {
             console.log("result: ", result.data);
             setMedicineList(result.data);
-        }).
-        catch(error=> {
+        })
+        .catch(error=> {
             console.log(error);
         });
     },[])
@@ -19,6 +20,7 @@ function ViewMedicine(){
     let medicineItem = medicineList.map(m => 
         <div id={m.medname} key={m.medname}>
             <MedicineData meddata={m}></MedicineData>
+            <DeleteMedicine medname={m.medname}></DeleteMedicine>
         </div>
     )
 

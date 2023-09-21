@@ -25,17 +25,6 @@ function AddMedicine(){
         }
     }
 
-    let deleteMedicine = async(event)=>{
-        event.preventDefault();
-        let newmedicine = {"medname": medname, "medprice": medprice, "medseller": medseller, "meddescription": meddescription};
-        try{
-            let result = await axios.post("http://localhost:8081/medicine/deleteMedicine",newmedicine);
-            alert(result.data);
-        }catch(ex){
-            console.log(ex);
-        }
-    }
-
     return(
         <div>
             <h2>Add Medicine</h2>
@@ -52,13 +41,6 @@ function AddMedicine(){
                 <input type="submit" value="submit"/>
                 <input type="reset" value="reset"/><br/>
                 <Link to="/admin/addMedicine">Back to Home</Link>
-            </form>
-
-            <form onSubmit={deleteMedicine}>
-                <label>Name</label>
-                <input type="text" name="medname" onChange={e=>setMedname(e.target.value)}/><br/>
-                <input type="submit" value="submit"/>
-                <input type="reset" value="reset"/><br/>
             </form>
         </div>
     )
