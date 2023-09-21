@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class MedicineService {
 		}else {
 			return "Medicine not present";
 		}
+	}
+	
+	public List<Medicine> listMedicine() {
+		return medicineRepository.findAll();
 	}
 
 }

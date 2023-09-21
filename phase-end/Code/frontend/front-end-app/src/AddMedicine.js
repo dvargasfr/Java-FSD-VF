@@ -29,9 +29,7 @@ function AddMedicine(){
         event.preventDefault();
         let newmedicine = {"medname": medname, "medprice": medprice, "medseller": medseller, "meddescription": meddescription};
         try{
-            console.log("Posting to delete...");
             let result = await axios.post("http://localhost:8081/medicine/deleteMedicine",newmedicine);
-            console.log("Delete sent");
             alert(result.data);
         }catch(ex){
             console.log(ex);
