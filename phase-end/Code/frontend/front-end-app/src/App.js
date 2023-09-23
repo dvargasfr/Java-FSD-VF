@@ -6,6 +6,7 @@ import Admin from './Admin';
 import Customer from './Customer';
 import AddMedicine from './AddMedicine';
 import ViewMedicine from './ViewMedicine';
+import UpdateMedicine from './UpdateMedicine';
 import {Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/admin" element={<Admin/>}>
         <Route path="addMedicine" element={<AddMedicine/>}></Route>
         <Route path="viewMedicine" element={<ViewMedicine/>}></Route>
+        <Route path="updateMedicine" element={<UpdateMedicine/>}></Route>
         {/*deleteMedicine, checkOrders*/}
       </Route>
       <Route path="/customer" element={<Customer/>}>
