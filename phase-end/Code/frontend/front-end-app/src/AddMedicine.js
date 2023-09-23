@@ -20,7 +20,7 @@ function AddMedicine(){
             let result = await axios.post("http://localhost:8081/medicine/addMedicine",newmedicine);
             console.log(result.data);
             alert(result.data);
-            navigate("/admin/viewMedicine");
+            navigate("/admin/viewMedicineAdmin");
         }catch(ex){
             console.log(ex);
         }
@@ -41,7 +41,7 @@ function AddMedicine(){
                 <input type="text" name="meddescription" onChange={e=>setMeddescription(e.target.value)}/><br/>
                 <input type="submit" value="submit"/>
                 <input type="reset" value="reset"/><br/>
-                <Link to="/admin/viewMedicine">Back to Admin view</Link>
+                <Link to="/admin/viewMedicineAdmin">Back to Admin view</Link>
             </form>
         </div>
     )

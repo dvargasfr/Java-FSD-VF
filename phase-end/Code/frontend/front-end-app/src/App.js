@@ -5,7 +5,8 @@ import SignUp from './SignUp';
 import Admin from './Admin';
 import Customer from './Customer';
 import AddMedicine from './AddMedicine';
-import ViewMedicine from './ViewMedicine';
+import ViewMedicineAdmin from './ViewMedicineAdmin';
+import ViewMedicineCustomer from './ViewMedicineCustomer';
 import UpdateMedicine from './UpdateMedicine';
 import {Route, Routes} from 'react-router-dom';
 
@@ -20,12 +21,12 @@ function App() {
       <Route path="/signup" element={<SignUp/>}></Route>
       <Route path="/admin" element={<Admin/>}>
         <Route path="addMedicine" element={<AddMedicine/>}></Route>
-        <Route path="viewMedicine" element={<ViewMedicine/>}></Route>
+        <Route path="viewMedicineAdmin" element={<ViewMedicineAdmin/>}></Route>
         <Route path="updateMedicine" element={<UpdateMedicine/>}></Route>
         {/*deleteMedicine, checkOrders*/}
       </Route>
       <Route path="/customer" element={<Customer/>}>
-        <Route path="viewMedicine" element={<ViewMedicine/>}></Route>
+        <Route path="viewMedicineCustomer" element={<ViewMedicineCustomer/>}></Route>
       </Route>
     </Routes>
     </div>

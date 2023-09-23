@@ -19,7 +19,7 @@ function UpdateMedicine(props, { medicine, onSave }) {
             let result = await axios.post("http://localhost:8081/medicine/updateMedicine",updatedMedicine);
             console.log(updatedMedicine);
             alert(updatedMedicine);
-            navigate("/admin/viewMedicine");
+            navigate("/admin/viewMedicineAdmin");
         }catch(ex){
             console.log(ex);
         }
@@ -37,7 +37,7 @@ function UpdateMedicine(props, { medicine, onSave }) {
             <input type="text" name="meddescription" defaultValue={medicineData.meddescription} onChange={e=>setMeddescription(e.target.value)}/><br/>
             
             <input type="submit" value="submit"/>
-            <Link to="/admin/viewMedicine">Back to Admin view</Link>
+            <Link to="/admin/viewMedicineAdmin">Back to Admin view</Link>
             </form>
         </div>
   );

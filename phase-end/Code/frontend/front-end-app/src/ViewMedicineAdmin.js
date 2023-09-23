@@ -2,10 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link,Outlet } from "react-router-dom";
 import DeleteMedicine from "./DeleteMedicine";
-import UpdateMedicine from "./UpdateMedicine";
-import { ArrowUp, ArrowDown } from "react-feather";
+import { ChevronsDown, ChevronsUp, ArrowDown, ArrowUp, ArrowDownCircle, ArrowUpCircle } from "react-feather";
 
-function ViewMedicine(){
+function ViewMedicineAdmin(){
 
     const [sortOrder, setSortOrder] = useState("asc");
     let [medicineList,setMedicineList] = useState([]);
@@ -56,17 +55,17 @@ function ViewMedicine(){
                     <tr>
                         <th>Name{" "}
                             <span className="cursor-pointer" onClick={() => handleSortClick("name")}>
-                                {sortOrder.field === "name" && sortOrder.direction === "asc" ? <ArrowDown /> : <ArrowUp />}
+                                {sortOrder.field === "name" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
                             </span>
                         </th>
                         <th>Price{" "}
                             <span className="cursor-pointer" onClick={() => handleSortClick("price")}>
-                                {sortOrder.field === "price" && sortOrder.direction === "asc" ? <ArrowDown /> : <ArrowUp />}
+                                {sortOrder.field === "price" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
                             </span>
                         </th>
                         <th>Seller{" "}
                             <span className="cursor-pointer" onClick={() => handleSortClick("seller")}>
-                                {sortOrder.field === "seller" && sortOrder.direction === "asc" ? <ArrowDown /> : <ArrowUp />}
+                                {sortOrder.field === "seller" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
                             </span>
                         </th>
                         <th>Description</th>
@@ -95,4 +94,4 @@ function ViewMedicine(){
     )
 }
 
-export default ViewMedicine;
+export default ViewMedicineAdmin;
