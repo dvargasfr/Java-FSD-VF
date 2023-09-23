@@ -26,6 +26,11 @@ public class MedicineController {
 		return medicineService.addMedicine(medicine);
 	}
 	
+	@PostMapping(value = "updateMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String updateMedicine(@RequestBody Medicine medicine) {
+		return medicineService.updateMedicine(medicine);
+	}
+	
 	@PostMapping(value = "deleteMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteMedicine(@RequestBody Medicine medicine) {
 		return medicineService.deleteMedicine(medicine.getMedname());
@@ -34,7 +39,7 @@ public class MedicineController {
 	@RequestMapping(value = "listMedicine", method = RequestMethod.GET)
 	public List<Medicine> listMedicine() {
 		System.out.println("MedicineController - listMedicine()");
-		System.out.println(medicineService.listMedicine());
+		System.out.println(medicineService.listMedicine().toString());
 		return medicineService.listMedicine();
 	}
 }

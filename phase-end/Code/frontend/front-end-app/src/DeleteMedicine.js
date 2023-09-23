@@ -8,6 +8,7 @@ function DeleteMedicine(props){
         try{
             let result = await axios.post("http://localhost:8081/medicine/deleteMedicine",meddelete);
             alert(result.data);
+            props.updateMedicineList();
         }catch(ex){
             console.log(ex);
         }

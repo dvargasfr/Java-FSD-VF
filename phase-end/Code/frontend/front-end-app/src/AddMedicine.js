@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AddMedicine(){
 
+    let navigate = useNavigate();
     let [medname, setMedname] = useState("");
     let [medprice, setMedprice] = useState("");
     let [medseller, setMedseller] = useState("");
@@ -18,8 +19,8 @@ function AddMedicine(){
             /*let result = await axios.post("http://localhost:8081/login/signIn",login);*/
             let result = await axios.post("http://localhost:8081/medicine/addMedicine",newmedicine);
             console.log(result.data);
- 
             alert(result.data);
+            navigate("/admin/viewMedicine");
         }catch(ex){
             console.log(ex);
         }
@@ -40,7 +41,7 @@ function AddMedicine(){
                 <input type="text" name="meddescription" onChange={e=>setMeddescription(e.target.value)}/><br/>
                 <input type="submit" value="submit"/>
                 <input type="reset" value="reset"/><br/>
-                <Link to="/admin/addMedicine">Back to Home</Link>
+                <Link to="/admin/viewMedicine">Back to Admin view</Link>
             </form>
         </div>
     )
