@@ -8,27 +8,30 @@ import AddMedicine from './AddMedicine';
 import ViewMedicineAdmin from './ViewMedicineAdmin';
 import ViewMedicineCustomer from './ViewMedicineCustomer';
 import UpdateMedicine from './UpdateMedicine';
+import CartMedicine from './CartMedicine';
 import {Route, Routes} from 'react-router-dom';
+import { CartProvider } from "./CartContext";
 
 function App() {
   return (
     <div className="App">
       {/*<Login></Login>*/}
       {/*<SignUp></SignUp>*/}
-
-    <Routes>
-      <Route path="/" element={<Login/>}></Route>
-      <Route path="/signup" element={<SignUp/>}></Route>
-      <Route path="/admin" element={<Admin/>}>
-        <Route path="addMedicine" element={<AddMedicine/>}></Route>
-        <Route path="viewMedicineAdmin" element={<ViewMedicineAdmin/>}></Route>
-        <Route path="updateMedicine" element={<UpdateMedicine/>}></Route>
-        {/*deleteMedicine, checkOrders*/}
-      </Route>
-      <Route path="/customer" element={<Customer/>}>
-        <Route path="viewMedicineCustomer" element={<ViewMedicineCustomer/>}></Route>
-      </Route>
-    </Routes>
+      <CartProvider>
+        <Routes>
+          <Route path="/" element={<Login/>}></Route>
+          <Route path="/signup" element={<SignUp/>}></Route>
+          <Route path="/admin" element={<Admin/>}>
+            <Route path="addMedicine" element={<AddMedicine/>}></Route>
+            <Route path="viewMedicineAdmin" element={<ViewMedicineAdmin/>}></Route>
+            <Route path="updateMedicine" element={<UpdateMedicine/>}></Route>
+          </Route>
+          <Route path="/customer" element={<Customer/>}>
+            <Route path="viewMedicineCustomer" element={<ViewMedicineCustomer/>}></Route>
+            <Route path="cartMedicine" element={<CartMedicine/>}></Route>
+          </Route>
+        </Routes>
+      </CartProvider>
     </div>
   );
 }

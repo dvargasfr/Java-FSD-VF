@@ -29,15 +29,15 @@ function UpdateMedicine(props, { medicine, onSave }) {
         <div>
             <h2>Update Medicine - {medicineData.medname}</h2>
             <form onSubmit={updateMedicine}>
-            <label>Medicine Price:</label>
-            <input type="number" name="medprice" defaultValue={medicineData.medprice} onChange={e=>setMedprice(e.target.value)}/><br/>
-            <label>Medicine Seller:</label>
-            <input type="text" name="medseller" defaultValue={medicineData.medseller} onChange={e=>setMedseller(e.target.value)}/><br/>
-            <label>Medicine Description:</label>
-            <input type="text" name="meddescription" defaultValue={medicineData.meddescription} onChange={e=>setMeddescription(e.target.value)}/><br/>
-            
-            <input type="submit" value="submit"/>
-            <Link to="/admin/viewMedicineAdmin">Back to Admin view</Link>
+                <label>Medicine Price:</label>
+                <input type="number" name="medprice" defaultValue={medicineData.medprice} onChange={e=>setMedprice(e.target.value)}/><br/>
+                <label>Medicine Seller:</label>
+                <input type="text" name="medseller" defaultValue={medicineData.medseller} onChange={e=>setMedseller(e.target.value)}/><br/>
+                <label>Medicine Description:</label>
+                <input type="text" name="meddescription" defaultValue={medicineData.meddescription} onChange={e=>setMeddescription(e.target.value)}/><br/>
+                
+                <input type="submit" value="submit"/>
+                <Link to="/admin/viewMedicineAdmin">Back to Admin view</Link>
             </form>
         </div>
   );
