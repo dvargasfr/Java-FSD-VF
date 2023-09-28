@@ -12,11 +12,8 @@ function AddMedicine(){
 
     let addMedicine = async(event)=>{
         event.preventDefault();
-        /*console.log(emailid+" "+password+" "+typeofuser);*/
-        /*let login = {"emailid": emailid, "password": password, "typeofuser": typeofuser};*/
         let newmedicine = {"medname": medname, "medprice": medprice, "medseller": medseller, "meddescription": meddescription};
         try{
-            /*let result = await axios.post("http://localhost:8081/login/signIn",login);*/
             let result = await axios.post("http://localhost:8081/medicine/addMedicine",newmedicine);
             console.log(result.data);
             alert(result.data);
@@ -27,21 +24,50 @@ function AddMedicine(){
     }
 
     return(
-        <div>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
             <h2>Add Medicine</h2>
 
             <form onSubmit={addMedicine}>
-                <label>Name</label>
-                <input type="text" name="medname" onChange={e=>setMedname(e.target.value)}/><br/>
-                <label>Price</label>
-                <input type="number" step="any" min="0" name="medprice" onChange={e=>setMedprice(e.target.value)}/><br/>
-                <label>Seller</label>
-                <input type="text" name="medseller" onChange={e=>setMedseller(e.target.value)}/><br/>
-                <label>Description</label>
-                <input type="text" name="meddescription" onChange={e=>setMeddescription(e.target.value)}/><br/>
-                <input type="submit" value="submit"/>
-                <input type="reset" value="reset"/><br/>
-                <Link to="/admin/viewMedicineAdmin">Back to Admin view</Link>
+                <div class="row" style={{display:"grid", textAlign:"center"}}>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                            <div style={{float:"left", width:"50%"}}>
+                                <label>Name:</label>
+                            </div>
+                        
+                            <div style={{float:"right", width:"50%"}}>
+                            <input type="text" name="medname" onChange={e=>setMedname(e.target.value)}/><br/>
+                            </div>
+                        </div>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                        <div style={{float:"left", width:"50%"}}>
+                            <label>Price:</label>
+                        </div>
+                    
+                        <div style={{float:"right", width:"50%"}}>
+                        <input type="number" step="any" min="0" name="medprice" onChange={e=>setMedprice(e.target.value)}/><br/>
+                        </div>
+                    </div>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                        <div style={{float:"left", width:"50%"}}>
+                            <label>Seller:</label>
+                        </div>
+                        <div style={{float:"right", width:"50%"}}>
+                            <input type="text" name="medseller" onChange={e=>setMedseller(e.target.value)}/><br/>
+                        </div>
+                    </div>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                        <div style={{float:"left", width:"50%"}}>
+                            <label>Description:</label>
+                        </div>
+                        <div style={{float:"right", width:"50%"}}>
+                            <input type="text" name="meddescription" onChange={e=>setMeddescription(e.target.value)}/><br/>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+                <input type="submit" value="Add" style={{marginRight:"10%"}}/>
+                <input type="reset" value="Reset"/>
             </form>
         </div>
     )

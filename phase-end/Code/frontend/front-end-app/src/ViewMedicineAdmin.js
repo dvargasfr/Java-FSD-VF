@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link,Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DeleteMedicine from "./DeleteMedicine";
-import { ChevronsDown, ChevronsUp, ArrowDown, ArrowUp, ArrowDownCircle, ArrowUpCircle } from "react-feather";
+import { ChevronsDown, ChevronsUp } from "react-feather";
 
 function ViewMedicineAdmin(){
 
@@ -49,47 +49,48 @@ function ViewMedicineAdmin(){
 
     return(
         <div>
-            <h2>View Medicine</h2>
-            <table className="custom-table">
-                <thead>
-                    <tr>
-                        <th>Name{" "}
-                            <span className="cursor-pointer" onClick={() => handleSortClick("name")}>
-                                {sortOrder.field === "name" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
-                            </span>
-                        </th>
-                        <th>Price{" "}
-                            <span className="cursor-pointer" onClick={() => handleSortClick("price")}>
-                                {sortOrder.field === "price" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
-                            </span>
-                        </th>
-                        <th>Seller{" "}
-                            <span className="cursor-pointer" onClick={() => handleSortClick("seller")}>
-                                {sortOrder.field === "seller" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
-                            </span>
-                        </th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedMedicineList.map(m => (
-                        <tr key={m.medname}>
-                            <td>{m.medname}</td>
-                            <td>{m.medprice}</td>
-                            <td>{m.medseller}</td>
-                            <td>{m.meddescription}</td>
-                            <td>
-                                <div style={{display: "inline-flex"}}>
-                                    <Link to="/admin/updateMedicine" state={{ medicineData: m }}>
-                                        <button type="button">Update</button>
-                                    </Link>
-                                    <DeleteMedicine medname={m.medname} updateMedicineList={updateMedicineList}/>
-                                </div>
-                            </td>
+            <div style={{alignItems: "center", justifyContent: "center", display: "flex"}}>
+                <table class="custom-table" style={{ borderCollapse: "collapse", width: "95%" }}>
+                    <thead>
+                        <tr>
+                            <th>Name{" "}
+                                <span className="cursor-pointer" onClick={() => handleSortClick("name")}>
+                                    {sortOrder.field === "name" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
+                                </span>
+                            </th>
+                            <th>Price{" "}
+                                <span className="cursor-pointer" onClick={() => handleSortClick("price")}>
+                                    {sortOrder.field === "price" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
+                                </span>
+                            </th>
+                            <th>Seller{" "}
+                                <span className="cursor-pointer" onClick={() => handleSortClick("seller")}>
+                                    {sortOrder.field === "seller" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
+                                </span>
+                            </th>
+                            <th>Description</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedMedicineList.map(m => (
+                            <tr key={m.medname}>
+                                <td>{m.medname}</td>
+                                <td>{m.medprice}</td>
+                                <td>{m.medseller}</td>
+                                <td>{m.meddescription}</td>
+                                <td>
+                                    <div style={{display: "inline-flex"}}>
+                                        <Link to="/admin/updateMedicine" state={{ medicineData: m }} style={{marginRight: "10%"}}>
+                                            <button type="button">Update</button>
+                                        </Link>
+                                        <DeleteMedicine medname={m.medname} updateMedicineList={updateMedicineList}/>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

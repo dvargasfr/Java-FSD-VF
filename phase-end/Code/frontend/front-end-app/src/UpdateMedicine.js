@@ -26,18 +26,39 @@ function UpdateMedicine(props, { medicine, onSave }) {
     }
 
     return (
-        <div>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
             <h2>Update Medicine - {medicineData.medname}</h2>
             <form onSubmit={updateMedicine}>
-                <label>Medicine Price:</label>
-                <input type="number" name="medprice" defaultValue={medicineData.medprice} onChange={e=>setMedprice(e.target.value)}/><br/>
-                <label>Medicine Seller:</label>
-                <input type="text" name="medseller" defaultValue={medicineData.medseller} onChange={e=>setMedseller(e.target.value)}/><br/>
-                <label>Medicine Description:</label>
-                <input type="text" name="meddescription" defaultValue={medicineData.meddescription} onChange={e=>setMeddescription(e.target.value)}/><br/>
-                
-                <input type="submit" value="submit"/>
-                <Link to="/admin/viewMedicineAdmin">Back to Admin view</Link>
+                <div class="row" style={{display:"grid", textAlign:"center"}}>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                        <div style={{float:"left", width:"50%"}}>
+                            <label>Price:</label>
+                        </div>
+                    
+                        <div style={{float:"right", width:"50%"}}>
+                            <input type="number" name="medprice" defaultValue={medicineData.medprice} onChange={e=>setMedprice(e.target.value)}/><br/>
+                        </div>
+                    </div>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                        <div style={{float:"left", width:"50%"}}>
+                            <label>Seller:</label>
+                        </div>
+                        <div style={{float:"right", width:"50%"}}>
+                            <input type="text" name="medseller" defaultValue={medicineData.medseller} onChange={e=>setMedseller(e.target.value)}/><br/>
+                        </div>
+                    </div>
+                    <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                        <div style={{float:"left", width:"50%"}}>
+                            <label>Description:</label>
+                        </div>
+                        <div style={{float:"right", width:"50%"}}>
+                            <input type="text" name="meddescription" defaultValue={medicineData.meddescription} onChange={e=>setMeddescription(e.target.value)}/><br/>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+                <input type="submit" value="Update"/>
             </form>
         </div>
   );

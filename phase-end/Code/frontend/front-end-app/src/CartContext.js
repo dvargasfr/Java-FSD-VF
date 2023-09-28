@@ -14,11 +14,16 @@ export function CartProvider({ children }) {
   };
 
   const removeFromCart = (medicine) => {
+    console.log("removing", medicine.medname)
     setCart((prevCart) => prevCart.filter((item) => item.medicine.medname !== medicine.medname));
   };
 
+  const resetCart = () => {
+    setCart([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, resetCart }}>
       {children}
     </CartContext.Provider>
   );

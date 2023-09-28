@@ -1,16 +1,21 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  margin: auto;
+}
+
 .custom-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .custom-table th,
-  .custom-table td {
-    width: 25%; /* Dividir el ancho en 4 columnas iguales */
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ccc;
-  }
-  
-  .custom-table th {
-    background-color: #f2f2f2;
-  }
+  border-collapse: collapse;
+}
+
+.custom-table tr {
+  border: 1px solid #ccc;
+}
+
+/*
+.custom-table th {
+  background-color: #f2f2f2;
+}
+*/

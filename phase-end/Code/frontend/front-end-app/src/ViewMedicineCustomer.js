@@ -1,17 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronsDown, ChevronsUp, ArrowDown, ArrowUp, ArrowDownCircle, ArrowUpCircle, ShoppingBag, ShoppingCart } from "react-feather";
+import { ChevronsDown, ChevronsUp, ShoppingCart } from "react-feather";
 import SearchMedicine from "./SearchMedicine";
 import OrderMedicine from "./OrderMedicine";
 import { CartProvider, useCart } from "./CartContext";
 
 function ViewMedicineCustomer(){
 
-    let [medicineList,setMedicineList] = useState([]);
+    let [medicineList, setMedicineList] = useState([]);
     let [sortOrder, setSortOrder] = useState({ field: "name", direction: "asc" });
     let [filteredMedicineList, setFilteredMedicineList] = useState([]);
-    //let [cart, setCart] = useState([]);
     const { cart, addToCart } = useCart();
 
     useEffect(()=> { 
@@ -44,7 +43,7 @@ function ViewMedicineCustomer(){
         setFilteredMedicineList(filteredList);
     };
 
-    const sortedMedicineList = [...filteredMedicineList];
+    const sortedMedicineList = [...filteredMedicineList]; 
 
     if (sortOrder.field === "name") {
         sortedMedicineList.sort((a, b) => (sortOrder.direction === "asc" ? a.medname.localeCompare(b.medname) : b.medname.localeCompare(a.medname)));
@@ -55,47 +54,56 @@ function ViewMedicineCustomer(){
     }
 
     return(
-        <div>
-            <Link to="/customer/cartMedicine">
-                Cart <ShoppingCart /> 
-                {cart.length > 0 && <span className="cart-badge">{cart.length}</span>} items
-            </Link>
-            <SearchMedicine onSearch={handleSearch} />
-            <table className="custom-table">
-                <thead>
-                    <tr>
-                        <th>Name{" "}
-                            <span className="cursor-pointer" onClick={() => handleSortClick("name")}>
-                                {sortOrder.field === "name" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
-                            </span>
-                        </th>
-                        <th>Price{" "}
-                            <span className="cursor-pointer" onClick={() => handleSortClick("price")}>
-                                {sortOrder.field === "price" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
-                            </span>
-                        </th>
-                        <th>Seller{" "}
-                            <span className="cursor-pointer" onClick={() => handleSortClick("seller")}>
-                                {sortOrder.field === "seller" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
-                            </span>
-                        </th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedMedicineList.map(m => (
-                        <tr key={m.medname}>
-                            <td>{m.medname}</td>
-                            <td>{m.medprice}</td>
-                            <td>{m.medseller}</td>
-                            <td>{m.meddescription}</td>
-                            <td>
-                                <OrderMedicine medicine={m} onAddToCart={addToCart} />
-                            </td>
+        <div class="row" style={{display:"grid", textAlign:"center"}}>
+            <div class="row" style={{display:"inline-flex", marginBottom:"1%"}}>
+                <div style={{float:"left", width:"33.33%"}}></div>
+                <div style={{float:"left", width:"33.33%"}}>
+                    <SearchMedicine onSearch={handleSearch} />
+                </div>
+                <div style={{float:"right", width:"33.33%"}}>
+                        <Link to="/customer/cartMedicine" style={{display:"flex", marginRight:"10%", justifyContent:"flex-end", textDecoration:"none"}}>
+                            <ShoppingCart style={{marginRight:"3px"}}/> <br/>
+                            {cart.length >= 0 && <span> { cart.length } </span>}  <span style={{marginLeft:"3px"}}> items</span>
+                        </Link>
+                </div>
+            </div>
+            <div style={{alignItems: "center", justifyContent: "center", display: "flex"}}>
+                <table class="custom-table" style={{ borderCollapse: "collapse", width: "95%" }}>
+                    <thead>
+                        <tr>
+                            <th>Name{" "}
+                                <span className="cursor-pointer" onClick={() => handleSortClick("name")}>
+                                    {sortOrder.field === "name" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
+                                </span>
+                            </th>
+                            <th>Price{" "}
+                                <span className="cursor-pointer" onClick={() => handleSortClick("price")}>
+                                    {sortOrder.field === "price" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
+                                </span>
+                            </th>
+                            <th>Seller{" "}
+                                <span className="cursor-pointer" onClick={() => handleSortClick("seller")}>
+                                    {sortOrder.field === "seller" && sortOrder.direction === "asc" ? <ChevronsDown /> : <ChevronsUp />}
+                                </span>
+                            </th>
+                            <th>Description</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedMedicineList.map(m => (
+                            <tr key={m.medname}>
+                                <td>{m.medname}</td>
+                                <td>$ {m.medprice}</td>
+                                <td>{m.medseller}</td>
+                                <td>{m.meddescription}</td>
+                                <td>
+                                    <OrderMedicine medicine={m} onAddToCart={addToCart} />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

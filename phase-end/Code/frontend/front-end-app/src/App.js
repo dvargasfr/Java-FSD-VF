@@ -9,6 +9,8 @@ import ViewMedicineAdmin from './ViewMedicineAdmin';
 import ViewMedicineCustomer from './ViewMedicineCustomer';
 import UpdateMedicine from './UpdateMedicine';
 import CartMedicine from './CartMedicine';
+import PayMedicine from './PayMedicine';
+import PaymentDetails from './PaymentDetails';
 import {Route, Routes} from 'react-router-dom';
 import { CartProvider } from "./CartContext";
 
@@ -29,6 +31,8 @@ function App() {
           <Route path="/customer" element={<Customer/>}>
             <Route path="viewMedicineCustomer" element={<ViewMedicineCustomer/>}></Route>
             <Route path="cartMedicine" element={<CartMedicine/>}></Route>
+            <Route path="payMedicine" element={<PayMedicine/>}></Route>
+            <Route path="paymentDetails" element={<PaymentDetails/>}></Route>
           </Route>
         </Routes>
       </CartProvider>
