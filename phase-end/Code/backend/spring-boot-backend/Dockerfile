@@ -1,3 +1,3 @@
 FROM openjdk:11
-COPY spring-boot-with-aws-0.0.1-SNAPSHOT.jar .
+COPY spring-boot-capstone-backend.jar .
 CMD ["java","-jar","spring-boot-capstone-backend.jar"]
