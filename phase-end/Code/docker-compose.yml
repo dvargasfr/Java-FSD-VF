@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: Simplilearn
+      MYSQL_DATABASE: capstone
+    ports:
+      - "3306:3306"
+    networks:
+      - backend-network
+
+  springbootapp:
+    image: dvargasfr/fsd-java-capstone
+    container_name: springboot-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+    networks:
+      - backend-network
+
+  react-frontend:
+    image: dvargasfr/fsd-react-capstone
+    container_name: react-frontend-container
+    ports:
+      - 3000:3000
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+

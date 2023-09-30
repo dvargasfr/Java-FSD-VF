@@ -1,3 +1,3 @@
-FROM openjdk:11
-COPY spring-boot-capstone-backend.jar .
-CMD ["java","-jar","spring-boot-capstone-backend.jar"]
+FROM openjdk:11-jre-slim
+COPY spring-boot-backend-0.0.1-SNAPSHOT.jar .
+CMD ["java","-jar","spring-boot-backend-0.0.1-SNAPSHOT.jar"]
