@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ChevronsDown, ChevronsUp, ShoppingCart } from "react-feather";
 import SearchMedicine from "./SearchMedicine";
 import OrderMedicine from "./OrderMedicine";
-import { CartProvider, useCart } from "./CartContext";
+import { useCart } from "./CartContext";
 
 function ViewMedicineCustomer(){
 

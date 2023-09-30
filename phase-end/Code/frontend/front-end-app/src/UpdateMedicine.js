@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function UpdateMedicine(props, { medicine, onSave }) {
@@ -7,7 +7,7 @@ function UpdateMedicine(props, { medicine, onSave }) {
     const location = useLocation();
     const { medicineData } = location.state;
     let navigate = useNavigate();
-    let [medname, setMedname] = useState(medicineData.medname);
+    let [medname] = useState(medicineData.medname);
     let [medprice, setMedprice] = useState(medicineData.medprice);
     let [medseller, setMedseller] = useState(medicineData.medseller);
     let [meddescription, setMeddescription] = useState(medicineData.meddescription);
@@ -16,7 +16,7 @@ function UpdateMedicine(props, { medicine, onSave }) {
         event.preventDefault();
         let updatedMedicine = {"medname": medname, "medprice": medprice, "medseller": medseller, "meddescription": meddescription};
         try{
-            let result = await axios.post("http://localhost:8081/medicine/updateMedicine",updatedMedicine);
+            await axios.post("http://localhost:8081/medicine/updateMedicine",updatedMedicine);
             console.log(updatedMedicine);
             alert(updatedMedicine);
             navigate("/admin/viewMedicineAdmin");
